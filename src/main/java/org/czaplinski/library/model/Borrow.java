@@ -17,12 +17,12 @@ public class Borrow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToOne
-    @JoinColumn(name = "copy_of_book_id")
-    private CopyOfBook copyOfBook;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @OneToOne
+    @JoinColumn(name = "copy_of_book_id")
+    private CopyOfBook copyOfBook;
     private LocalDate borrowedDate;
     private LocalDate returnedDate;
 

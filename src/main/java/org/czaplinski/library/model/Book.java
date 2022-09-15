@@ -29,4 +29,11 @@ public class Book {
             fetch = FetchType.LAZY
     )
     private List<CopyOfBook> listOfBookCopies;
+
+    public Book(long id, String title, String author, LocalDate yearOfPublication) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.yearOfPublication = yearOfPublication;
+    }
 }

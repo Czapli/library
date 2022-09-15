@@ -30,4 +30,21 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<Borrow> listOfBorrowedBook;
+
+    public User(long id, String firstName, String lastName, String emailAddress, String parcelLocker, LocalDate accountCreationDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.parcelLocker = parcelLocker;
+        this.accountCreationDate = accountCreationDate;
+    }
+
+    public User(String firstName, String lastName, String emailAddress, String parcelLocker, LocalDate accountCreationDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.parcelLocker = parcelLocker;
+        this.accountCreationDate = accountCreationDate;
+    }
 }
