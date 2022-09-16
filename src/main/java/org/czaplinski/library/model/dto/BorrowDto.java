@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class BorrowDto {
-    private long idUser;
-    private long idCopy;
+    private long userId;
+    private long copyId;
 }

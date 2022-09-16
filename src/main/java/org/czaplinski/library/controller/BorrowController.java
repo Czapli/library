@@ -1,6 +1,7 @@
 package org.czaplinski.library.controller;
 
 import org.czaplinski.library.model.dto.BorrowDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,20 +9,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/library")
 public class BorrowController {
-    @PostMapping(value = "{idUser}/borrow/{idBook}")
-    public ResponseEntity<BorrowDto> borrowBook (@PathVariable long idUser, @PathVariable long idBook) {
+    @PostMapping(value = "{userId}/borrow/{copyOfBookId}")
+    public ResponseEntity<BorrowDto> borrowBook(@PathVariable long userId, @PathVariable long copyOfBookId) {
         //mapper added borrowedDate
-        return ResponseEntity.ok( new BorrowDto(
-                idUser,
-                idBook
-        ));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new BorrowDto(
+                        userId,
+                        copyOfBookId
+                ));
     }
-    @PutMapping(value = "{idUser}/return/{idBook}")
-    public ResponseEntity<BorrowDto> returnBook (@PathVariable long idUser, @PathVariable long idBook) {
+
+    @PutMapping(value = "return/{borrowId}")
+    public ResponseEntity<BorrowDto> returnBook(@PathVariable long borrowId) {
         //mapper added returnedDate
-        return ResponseEntity.ok( new BorrowDto(
-                idUser,
-                idBook
-        ));
+        return ResponseEntity.ok().build();
     }
 }

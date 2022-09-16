@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -21,7 +20,7 @@ public class Book {
     private long id;
     private String title;
     private String author;
-    private LocalDate yearOfPublication;
+    private int yearOfPublication;
     @OneToMany(
             targetEntity = CopyOfBook.class,
             mappedBy = "book",
@@ -30,7 +29,13 @@ public class Book {
     )
     private List<CopyOfBook> listOfBookCopies;
 
-    public Book(long id, String title, String author, LocalDate yearOfPublication) {
+    public Book(String title, String author, int yearOfPublication) {
+        this.title = title;
+        this.author = author;
+        this.yearOfPublication = yearOfPublication;
+    }
+
+    public Book(long id, String title, String author, int yearOfPublication) {
         this.id = id;
         this.title = title;
         this.author = author;

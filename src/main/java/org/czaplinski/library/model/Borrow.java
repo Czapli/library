@@ -26,4 +26,11 @@ public class Borrow {
     private LocalDate borrowedDate;
     private LocalDate returnedDate;
 
+    public Borrow(User user, CopyOfBook copyOfBook, LocalDate borrowedDate, LocalDate returnedDate) {
+        this.user = user;
+        this.copyOfBook = copyOfBook;
+        this.borrowedDate = borrowedDate;
+        this.returnedDate = returnedDate;
+    }
+
 }

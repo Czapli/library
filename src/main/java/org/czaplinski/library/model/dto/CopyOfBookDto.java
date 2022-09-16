@@ -8,6 +8,6 @@ import org.czaplinski.library.model.StatusOfBook;
 @Setter
 @AllArgsConstructor
 public class CopyOfBookDto {
-    private long idBook;
+    private long bookId;
     private StatusOfBook status;
 }

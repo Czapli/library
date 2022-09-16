@@ -13,6 +13,5 @@ import java.time.LocalDate;
 public class BookDto {
     private String title;
     private String author;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate yearOfPublication;
+    private int yearOfPublication;
 }

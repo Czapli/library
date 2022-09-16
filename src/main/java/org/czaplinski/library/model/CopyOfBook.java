@@ -7,6 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+@NamedNativeQuery(
+        name = "CopyOfBook.findNumberOfCopies",
+        query = "COUNT (*) " +
+                "FROM copy_of_book " +
+                "WHERE book_id = :BOOK_ID"
+)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,4 +30,9 @@ public class CopyOfBook {
     @OneToOne
 //    @JoinColumn(name = "borrow_id")
     private Borrow borrow;
+
+    public CopyOfBook(Book book, StatusOfBook status) {
+        this.book = book;
+        this.status = status;
+    }
 }

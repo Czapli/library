@@ -2,6 +2,7 @@ package org.czaplinski.library.controller;
 
 import org.czaplinski.library.model.StatusOfBook;
 import org.czaplinski.library.model.dto.CopyOfBookDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,21 +10,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/library/copyOfBook")
 public class CopyOfBookController {
-    @PostMapping(value = {"add/{idBook}/{status}"})
-    public ResponseEntity<CopyOfBookDto> addNewCopy(@PathVariable long idBook, @PathVariable StatusOfBook status) {
-        return ResponseEntity.ok(new CopyOfBookDto(idBook, status));
+    @PostMapping(value = {"add/{bookId}/{status}"})
+    public ResponseEntity<CopyOfBookDto> addCopy(@PathVariable long bookId, @PathVariable StatusOfBook status) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new CopyOfBookDto(bookId, status));
     }
 
-    @PutMapping(value = "change/{idCopy}/{status}")
-    public ResponseEntity<CopyOfBookDto> changeStatus(@PathVariable long idCopy, @PathVariable StatusOfBook status) {
+    @PutMapping(value = "change/{copyId}/{status}")
+    public ResponseEntity<CopyOfBookDto> changeStatus(@PathVariable long copyId, @PathVariable StatusOfBook status) {
         // getById -> updateStatus
         return ResponseEntity.ok(new CopyOfBookDto(
-                    idCopy, status
+                copyId, status
                 )
         );
     }
-    @GetMapping(value = {"{idCopy}"})
-    public ResponseEntity<Integer> getNumberOfCopies(@PathVariable long idCopy) {
-        return ResponseEntity.ok(5);
+
+    @GetMapping(value = {"{copyId}"})
+    public ResponseEntity<Integer> getNumberOfCopies(@PathVariable long copyId) {
+        return ResponseEntity.status(HttpStatus.FOUND).body(5);
     }
 }
