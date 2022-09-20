@@ -19,15 +19,15 @@ public class Borrow {
     private long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Borrower borrower;
     @OneToOne
     @JoinColumn(name = "copy_of_book_id")
     private CopyOfBook copyOfBook;
     private LocalDate borrowedDate;
     private LocalDate returnedDate;
 
-    public Borrow(User user, CopyOfBook copyOfBook, LocalDate borrowedDate, LocalDate returnedDate) {
-        this.user = user;
+    public Borrow(Borrower borrower, CopyOfBook copyOfBook, LocalDate borrowedDate, LocalDate returnedDate) {
+        this.borrower = borrower;
         this.copyOfBook = copyOfBook;
         this.borrowedDate = borrowedDate;
         this.returnedDate = returnedDate;

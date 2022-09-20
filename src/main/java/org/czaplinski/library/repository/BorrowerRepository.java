@@ -1,9 +1,9 @@
 package org.czaplinski.library.repository;
 
-import org.czaplinski.library.model.User;
+import org.czaplinski.library.model.Borrower;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface BorrowerRepository extends JpaRepository<Borrower, Long> {
 }

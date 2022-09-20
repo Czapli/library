@@ -9,9 +9,9 @@ import javax.persistence.*;
 
 @NamedNativeQuery(
         name = "CopyOfBook.findNumberOfCopies",
-        query = "COUNT (*) " +
-                "FROM copy_of_book " +
-                "WHERE book_id = :BOOK_ID"
+        query = "SELECT COUNT(*) " +
+                "FROM copy_of_book c " +
+                "WHERE c.book_id= :BOOK_ID"
 )
 @Getter
 @Setter
@@ -28,7 +28,6 @@ public class CopyOfBook {
     @Enumerated(EnumType.STRING)
     private StatusOfBook status;
     @OneToOne
-//    @JoinColumn(name = "borrow_id")
     private Borrow borrow;
 
     public CopyOfBook(Book book, StatusOfBook status) {
