@@ -26,7 +26,7 @@ class BorrowerTest {
     void addUserToRepositoryTest() {
 
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerRepository.save(borrower);
 
         //When
@@ -39,7 +39,7 @@ class BorrowerTest {
     void addUserToRepositoryByServiceTest() {
 
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerService.addBorrower(borrower);
 
         //When
@@ -52,7 +52,7 @@ class BorrowerTest {
     @Test
     void mapUserDtoToUserTest() {
         //Given
-        BorrowerDto borrowerDto = new BorrowerDto("firstName test", "lastName test", "email test", "1234");
+        BorrowerDto borrowerDto = new BorrowerDto("firstName test", "lastName test", "test@czaplinski.org", "1234");
 
         //When
         Borrower borrower = borrowerMapper.mapToBorrower(borrowerDto);

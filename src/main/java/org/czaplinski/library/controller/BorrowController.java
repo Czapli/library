@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/library")
 public class BorrowController {
-    BorrowService borrowService;
-    BorrowMapper borrowMapper;
+    private final BorrowService borrowService;
+    private final BorrowMapper borrowMapper;
     @PostMapping(value = "{borrowerId}/borrow/{copyOfBookId}")
     public ResponseEntity<Void> borrowBook(@PathVariable long borrowerId, @PathVariable long copyOfBookId) throws CopyOfBookNotFoundExceptions, BookNotFoundExceptions {
         if(borrowService.borrowBook(borrowMapper.mapToNewBorrow(borrowerId, copyOfBookId))){

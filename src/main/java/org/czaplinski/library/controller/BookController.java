@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/library/book")
 public class BookController {
 
-    BookService bookService;
-    BookMapper bookMapper;
+    private final BookService bookService;
+    private final BookMapper bookMapper;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookDto> addBook(@RequestBody BookDto bookDto) {

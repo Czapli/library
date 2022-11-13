@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/library/user")
 public class BorrowerController {
-    BorrowerService borrowerService;
-    BorrowerMapper borrowerMapper;
+    private final BorrowerService borrowerService;
+    private final BorrowerMapper borrowerMapper;
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<BorrowerDto> addUser(@RequestBody BorrowerDto borrowerDto) {

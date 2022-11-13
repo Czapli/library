@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/library/copyOfBook")
 public class CopyOfBookController {
-    CopyOfBookService copyOfBookService;
-    CopyOfBookMapper copyOfBookMapper;
+    private final CopyOfBookService copyOfBookService;
+    private final CopyOfBookMapper copyOfBookMapper;
 
     @PostMapping(value = {"add/{bookId}/{status}"})
     public ResponseEntity<Void> addCopy(@PathVariable long bookId, @PathVariable StatusOfBook status) throws BookNotFoundExceptions {

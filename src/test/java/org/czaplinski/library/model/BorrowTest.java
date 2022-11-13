@@ -36,7 +36,7 @@ class BorrowTest {
     @Test
     void addBorrowToRepositoryTest() {
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerRepository.save(borrower);
         Book book = new Book("title test", "author test", 1999);
         bookRepository.save(book);
@@ -56,7 +56,7 @@ class BorrowTest {
     void mapToBorrowTest() throws BookNotFoundExceptions, CopyOfBookNotFoundExceptions {
 
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerRepository.save(borrower);
         Book book = new Book("title test", "author test", 1999);
         bookRepository.save(book);
@@ -77,7 +77,7 @@ class BorrowTest {
     @Test
     void borrowBookTest() throws BookNotFoundExceptions, CopyOfBookNotFoundExceptions {
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerRepository.save(borrower);
         Book book = new Book("title test", "author test", 1999);
         bookRepository.save(book);
@@ -100,7 +100,7 @@ class BorrowTest {
     void returnBookTest() throws BookNotFoundExceptions, CopyOfBookNotFoundExceptions, BorrowNotFoundExceptions {
 
         //Given
-        Borrower borrower = new Borrower("firstName test", "lastName test", "email test", "1234", LocalDate.now());
+        Borrower borrower = new Borrower("firstName test", "lastName test", "test@czaplinski.org", "1234", LocalDate.now());
         borrowerRepository.save(borrower);
         Book book = new Book("title test", "author test", 1999);
         bookRepository.save(book);
