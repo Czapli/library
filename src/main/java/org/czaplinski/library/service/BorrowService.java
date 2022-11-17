@@ -9,6 +9,7 @@ import org.czaplinski.library.repository.BorrowRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -20,6 +21,7 @@ public class BorrowService {
     public boolean borrowBook(Borrow borrow) {
         if (borrow.getCopyOfBook().getStatus().equals(StatusOfBook.IN_USE)) {
             borrow.getCopyOfBook().setStatus(StatusOfBook.BORROWED);
+            borrow.getCopyOfBook().setBorrow(borrow);
             borrowRepository.save(borrow);
             logService.saveLog(logMessageBorrow(borrow));
             mailService.send(mailMessageBorrow(borrow));
@@ -32,9 +34,14 @@ public class BorrowService {
         Borrow returnedBook = borrowRepository.findById(borrowId).orElseThrow(BorrowNotFoundExceptions::new);
         returnedBook.getCopyOfBook().setStatus(StatusOfBook.IN_USE);
         returnedBook.setReturnedDate(LocalDate.now());
+        returnedBook.getCopyOfBook().setBorrow(null);
         borrowRepository.save(returnedBook);
         logService.saveLog(logMessageReturn(returnedBook));
         mailService.send(mailMessageReturn(returnedBook));
+    }
+
+    public List<Borrow> getAllBorrow() {
+        return borrowRepository.findAll();
     }
 
     private static Mail mailMessageBorrow(Borrow borrow) {

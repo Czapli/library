@@ -14,10 +14,9 @@ public class MailService {
     private final LogService logService;
 
     public void send(final Mail mail) {
-        logService.saveLog("Starting email preparation to " + mail.getMailTo());
         try {
-            javaMailSender.send(createMail(mail));
-            logService.saveLog("Email has been sent.");
+//            javaMailSender.send(createMail(mail));  //uncomment if set on heroku
+            System.out.println("### sending mail ###");
         } catch (MailException e) {
             logService.saveLog("Failed to process email sending: " + e.getMessage());
         }
